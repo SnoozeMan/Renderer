@@ -20,7 +20,7 @@ public class Game {
         }
     }
     public void update() {
-
+        //DO UPDATE
     }
     public void render() {
         mesh.draw();
