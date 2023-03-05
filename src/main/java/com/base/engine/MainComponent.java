@@ -1,8 +1,8 @@
 package com.base.engine;
 
 public class MainComponent {
-    private static final int WIDTH = 800;
-    private static final int HEIGHT = 600;
+    private static final int WIDTH = 1920; // 800
+    private static final int HEIGHT = 1080; // 600
     private static final String TITLE = "Renderer";
     private static final double FRAME_CAP = 5000;
 
