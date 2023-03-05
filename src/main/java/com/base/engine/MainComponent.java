@@ -1,7 +1,5 @@
 package com.base.engine;
 
-import org.lwjgl.glfw.GLFW;
-
 public class MainComponent {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
@@ -12,9 +10,10 @@ public class MainComponent {
     private boolean isRunning;
 
     private MainComponent() {
+        RenderUtility.initializeGraphics();
+        System.out.println("OpenGL version: " + RenderUtility.getOpenGLVersion());
         game = new Game();
         isRunning = false;
-        RenderUtility.initializeGraphics();
     }
 
     public void start() {

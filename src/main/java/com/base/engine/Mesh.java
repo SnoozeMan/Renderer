@@ -1,6 +1,7 @@
 package com.base.engine;
 
-import static org.lwjgl.opengles.GLES20.*;
+import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.opengl.GL20.*;
 
 public class Mesh {
     private int vbo;

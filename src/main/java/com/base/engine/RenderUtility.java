@@ -20,4 +20,8 @@ public class RenderUtility {
         // TODO: Depth clamp
         glEnable(GL_FRAMEBUFFER_SRGB); // Exponential correction for gamma correction
     }
+
+    public static String getOpenGLVersion() {
+        return glGetString(GL_VERSION);
+    }
 }
