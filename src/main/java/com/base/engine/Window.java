@@ -15,7 +15,7 @@ public class Window {
         window = glfwCreateWindow(width, height, title, 0, 0);
         GLFWVidMode videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         glfwSetWindowPos(window, (videoMode.width() - width) / 2, (videoMode.height() - height) / 2);
-        //glfwSwapInterval(1); // Enable v-sync TODO: MAYBE?
+        //glfwSwapInterval(1); // TODO: Enable v-sync
         glfwMakeContextCurrent(window); // Make the OpenGL context current
         glfwShowWindow(window);
         glfwSetKeyCallback(window, new Input());
@@ -40,12 +40,14 @@ public class Window {
     public static int getWidth() {
         int[] width = new int[1];
         glfwGetWindowSize(window, width, null);
+        System.out.println("WIDTH: "+width[0]);
         return width[0];
     }
 
     public static int getHeight() {
         int[] height = new int[1];
         glfwGetWindowSize(window, null, height);
+        System.out.println("HEIGHT: "+height[0]);
         return height[0];
     }
 

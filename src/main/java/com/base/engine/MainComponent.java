@@ -1,8 +1,8 @@
 package com.base.engine;
 
 public class MainComponent {
-    private static final int WIDTH = 1920; // 800
-    private static final int HEIGHT = 1080; // 600
+    private static final int WIDTH = 1280; // 800
+    private static final int HEIGHT = 720; // 600
     private static final String TITLE = "Renderer";
     private static final double FRAME_CAP = 5000;
 
@@ -37,7 +37,7 @@ public class MainComponent {
         final double frameTime = 1.0 / FRAME_CAP;
         long lastTime = Time.getTime();
         double unprocessedTime = 0;
-
+        int counter = 0;
         while(isRunning) {
             boolean render = false;
             long startTime = Time.getTime();
@@ -45,8 +45,8 @@ public class MainComponent {
             lastTime = Time.getTime();
             unprocessedTime += passedTime / (double)Time.SECOND;
             frameCounter += passedTime;
-
             while (unprocessedTime > frameTime) {
+                counter++;
                 render = true;
                 unprocessedTime -= frameTime;
                 if (Window.isCloseRequested()) {
@@ -58,6 +58,8 @@ public class MainComponent {
                 game.update();
 
                 if (frameCounter >= Time.SECOND) {
+                    System.out.println(counter);
+                    counter = 0;
                     System.out.println(frames);
                     frames = 0;
                     frameCounter = 0;
@@ -74,9 +76,6 @@ public class MainComponent {
                     throw new RuntimeException(e);
                 }
             }
-
-
-
         }
         cleanup();
     }

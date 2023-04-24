@@ -1,12 +1,30 @@
 package com.base.engine;
 
+import org.lwjgl.system.MemoryStack;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 import java.util.ArrayList;
-import java.util.Objects;
+
+import static org.lwjgl.stb.STBImage.*;
 
 public class ResourceLoader {
+    public static Texture loadTexture(String fileName) {
+        MemoryStack stack = MemoryStack.stackPush();
+        IntBuffer w = stack.mallocInt(1);
+        IntBuffer h = stack.mallocInt(1);
+        IntBuffer comp = stack.mallocInt(1);
+        stbi_set_flip_vertically_on_load(true);
+        ByteBuffer image = stbi_load(ResourceLoader.class.getClassLoader().getResource(fileName).getPath(), w, h, comp, 4);
+        if (image == null) {
+            throw new RuntimeException("Failed to load a texture file!"
+                    + System.lineSeparator() + stbi_failure_reason());
+        }
+        return new Texture(image.getInt());
+    }
 
     public static String loadShader(String fileName) {
         StringBuilder shaderSource = new StringBuilder();

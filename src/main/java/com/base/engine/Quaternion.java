@@ -32,7 +32,7 @@ public class Quaternion {
 
     public Quaternion multiply(Quaternion quaternion) {
         float w_ = w * quaternion.getW() - x * quaternion.getX() - y * quaternion.getY() - z * quaternion.getZ();
-        float x_ = x * quaternion.getW() + w * quaternion.getX() + y * quaternion.getZ() - z * quaternion.getW();
+        float x_ = x * quaternion.getW() + w * quaternion.getX() + y * quaternion.getZ() - z * quaternion.getY();
         float y_ = y * quaternion.getW() + w * quaternion.getY() + z * quaternion.getX() - x * quaternion.getZ();
         float z_ = z * quaternion.getW() + w * quaternion.getZ() + x * quaternion.getY() - y * quaternion.getX();
         return new Quaternion(x_, y_, z_, w_);
